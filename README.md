@@ -37,15 +37,23 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
    git clone https://github.com/username/ServeSpace.git
    cd ServeSpace
 2. **Set up Virtual Environment**
+   ```bash
    python -m venv env
    source env/bin/activate  # For Linux/Mac
    env\Scripts\activate     # For Windows
-3. **Install Dependencies**
+4. **Install Dependencies**
+   ```bash
    pip install django mysqlclient
-Note: mysqlclient is required to connect Django with MySQL. If you encounter installation issues with mysqlclient, refer to the installation guide.
+*Note: mysqlclient is required to connect Django with MySQL. If you encounter installation issues with mysqlclient, refer to the installation guide.*
 4.**Create MySQL Database**
+   ```bash
    CREATE DATABASE servespace;
+exit
+
+
 5.**Configure the Database**
+
+```bash
    Open ServeSpace/settings.py and update the DATABASES setting as follows:
    DATABASES = {
     'default': {
@@ -57,11 +65,21 @@ Note: mysqlclient is required to connect Django with MySQL. If you encounter ins
         'PORT': '3306',
     }
 }
+exit
+
 6.**Run Migrations**
+```bash
    python manage.py makemigrations
-python manage.py migrate
+   python manage.py migrate
+exit
+
+
 7.**Start the Development Server**
+```bash
    python manage.py runserver
+exit
+
+
 8.Visit http://127.0.0.1:8000 in your browser.
 
 ##Usage
