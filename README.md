@@ -46,16 +46,16 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
    pip install django mysqlclient
 *Note: mysqlclient is required to connect Django with MySQL. If you encounter installation issues with mysqlclient, refer to the installation guide.*
 4.**Create MySQL Database**
-   ```bash
+  `
    CREATE DATABASE servespace;
-exit
+`
 
 
 5.**Configure the Database**
 
-```bash
+
    Open ServeSpace/settings.py and update the DATABASES setting as follows:
-   DATABASES = {
+  ` DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'servespace',
@@ -65,30 +65,30 @@ exit
         'PORT': '3306',
     }
 }
-exit
+`
 
 6.**Run Migrations**
-```bash
+`
    python manage.py makemigrations
    python manage.py migrate
-exit
+`
 
 
 7.**Start the Development Server**
-```bash
+`
    python manage.py runserver
-exit
+`
 
 
-8.Visit http://127.0.0.1:8000 in your browser.
+8.Visit `http://127.0.0.1:8000` in your browser.
 
-##Usage
+## Usage
 **Setting Up the App**
 1.**Create a Django project named ServeSpaceProject**
-django-admin startproject ServeSpace
-2.**Create an app named 'volunteers'
-python manage.py startapp volunteers
+`django-admin startproject ServeSpace`
+2.**Create an app named 'volunteers'**
+`python manage.py startapp volunteers`
 **Static & Template files**
-Place all images in the static/images/ folder.
-Use the templates/volunteers/ folder for all HTML files.
-Include CSS and JavaScript files in static/css/ and static/js/ respectively.
+- Place all images in the static/images/ folder.
+- Use the templates/volunteers/ folder for all HTML files.
+- Include CSS and JavaScript files in static/css/ and static/js/ respectively.
