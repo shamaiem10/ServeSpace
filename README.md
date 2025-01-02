@@ -51,9 +51,17 @@ The project is organized into different folders and files. Here's a breakdown:
 # Main Folder: ServeSpace/
 ### ServeSpace/: This is the main folder for the project, which contains all the core files.
 **settings.py:** Contains the configuration settings for the project.
+
+
 **urls.py:** Handles the routing of URLs for the project.
+
+
 **wsgi.py and asgi.py:** These files are for deployment purposes, helping run the project on a server.
+
+
 **__init__.py:** A special Python file that indicates this folder is a Python package.
+
+
 ### App Folder: volunteers/
 ### volunteers/: This folder holds the files related to the app named volunteers (the core functionality of the project).
 ### migrations/: This folder contains files related to the database schema changes (like adding new tables).
@@ -71,6 +79,8 @@ The project is organized into different folders and files. Here's a breakdown:
 tests.py: Holds the test cases to check if the app is working correctly.
 # Other Files:
 **manage.py:** A command-line tool used to manage and run the project (like starting the server or creating database migrations).
+
+
 **db.sqlite3:** The database file where the project's data is stored (only if using SQLite).
 
 
