@@ -1,0 +1,461 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo-pic{
+    width: 200px;
+    height:50px;
+
+}
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Remove default link styles if divs are wrapped in <a> tags */
+a.event-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+
+.bg-blue {
+  background-color: #b3d9ff;
+}
+
+.bg-pink {
+  background-color: #ffc2c2;
+}
+
+.bg-blue {
+  background-color: #AED6F1; /* Light Blue */
+  color: #1F3A52; /* Dark Blue text for contrast */
+}
+
+.bg-pink {
+  background-color: #FADBD8; /* Light Pink */
+  color: #C0392B; /* Dark Red text for contrast */
+}
+
+.bg-green {
+  background-color: #A9DFBF; /* Light Green */
+  color: #1D8348; /* Dark Green text for contrast */
+}
+/* General styles for the events grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  padding: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center; /* Center-align text for the event name */
+  color: black; /* Make text color black */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.event-card:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Background colors for event cards */
+.bg-blue {
+  background-color:rgb(99, 151, 146); /* Light Blue */
+}
+
+.bg-pink {
+  background-color:rgb(206, 145, 159); /* Light Pink */
+}
+
+.bg-green {
+  background-color:rgb(125, 84, 123); /* Light Green */
+}
+
+/* Ensure text is well aligned within the event card */
+.event-description, .event-date, .event-location {
+  margin: 10px 0;
+  text-align: left; /* Left-align the description, date, and location */
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; /* Keep the event name centered */
+}
+
+/* Optional: Add responsiveness */
+@media (max-width: 768px) {
+  .event-card {
+      padding: 15px;
+  }
+}
+/* Remove default link styles */
+.event-link {
+  text-decoration: none; /* No underline */
+  color: inherit; /* Inherit text color */
+}
+
+/* Optionally, you can add a hover effect on the entire event card */
+.event-card:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+  cursor: pointer; /* Show pointer cursor to indicate clickability */
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+}
+
+.nav-links {
+  flex-grow: 1; /* This will push the logout button to the bottom */
+}
+
+/* Base styles for events grid */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Style for individual event cards */
+.event-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.4));
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Color classes for different event card types with soft gradients */
+.bg-blue {
+    background: linear-gradient(135deg, #A2C2E1, #46618a);
+    color: #fff;
+}
+
+.bg-pink {
+    background: linear-gradient(135deg, #F1A7C6, #884c68);
+    color: #fff;
+}
+
+.bg-green {
+    background: linear-gradient(135deg, #A7D8B2, #477959);
+    color: #fff;
+}
+
+/* Event card hover effects */
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styles */
+.event-card h3 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Description text styles (justified text) */
+.event-description {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    color: #fff;
+    opacity: 0.85;
+    line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Date and location text styles */
+.event-date, .event-location {
+    font-size: 0.95rem;
+    color: #f0f0f0;
+}
+
+.event-date b, .event-location b {
+    color: #fff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .event-card {
+        padding: 18px;
+    }
+    .event-card h3 {
+        font-size: 1.5rem;
+    }
+    .event-description {
+        font-size: 0.95rem;
+    }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile" >
+        <br>
+        <img class="pfp" style="margin-bottom: 10px;" src="{% static 'volunteers/images/adminpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3 style="margin-bottom: 10px;">{{ username }}</h3>
+        <br>
+        <p>Admin</p>
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="nav-item">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                </svg>
+            </span>
+            <span style="color: gray;">Dashboard</span>
+        </a>
+        <a href="{% url 'admin-view-org' %}" class="nav-item">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                </svg>
+            </span>
+            View Organizations
+        </a>
+        <a href="{% url 'admin-view-volunteers' %}" class="nav-item">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                </svg>
+            </span>
+            View Volunteers
+        </a>
+        <a href="{% url 'admin-view-feedbacks' %}" class="nav-item">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+                </svg>
+            </span>
+            View Feedbacks
+        </a>
+        <!-- Logout Button -->
+        <div class="log-out">
+          <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg></span> Logout
+          </a>
+        </div>
+    </nav>
+    
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <img class="logo-pic" src="{% static 'volunteers/images/VMS-Logo-resize.jpg' %}" alt="Logo">
+        </div>
+        <div class="search-bar">
+          <form method="GET" action="">
+            <input type="text" name="search" placeholder="Filter by event name, location, or description..." value="{{ search_query }}" />
+            <button type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </header>
+    
+      <section class="welcome-section">
+        <h2>Upcoming Events</h2>
+      </section>
+    
+      <section class="events-grid">
+        {% if events %}
+            {% for event in events %}
+                <div class="event-card
+                    {% if forloop.counter|divisibleby:3 %}
+                        bg-blue
+                    {% elif forloop.counter|divisibleby:2 %}
+                        bg-pink
+                    {% else %}
+                        bg-green
+                    {% endif %}
+                ">
+                    <h3>{{ event.event_name }}</h3>
+                    <p class="event-description">{{ event.description }}</p>
+                    <p class="event-date"><b>Date:</b> {{ event.event_date }}</p>
+                    <p class="event-location"><b>Location:</b> {{ event.location }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No events available at the moment.</p>
+        {% endif %}
+      </section>
+    </main>
+    
+  </div>
+</body>
+</html>

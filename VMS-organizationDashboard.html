@@ -1,0 +1,515 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo-pic{
+    width: 200px;
+    height:50px;
+
+}
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Remove default link styles if divs are wrapped in <a> tags */
+a.event-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; /* Keep the event name centered */
+}
+
+/* Optional: Add responsiveness */
+@media (max-width: 768px) {
+  .event-card {
+      padding: 15px;
+  }
+}
+/* Remove default link styles */
+.event-link {
+  text-decoration: none; /* No underline */
+  color: inherit; /* Inherit text color */
+}
+
+/* Optionally, you can add a hover effect on the entire event card */
+.event-card:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+  cursor: pointer; /* Show pointer cursor to indicate clickability */
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+}
+
+.nav-links {
+  flex-grow: 1; /* This will push the logout button to the bottom */
+}
+.bg-blue {
+  background-color: #b3d9ff;
+}
+
+.bg-pink {
+  background-color: #ffc2c2;
+}
+
+.bg-blue {
+  background-color: #AED6F1; /* Light Blue */
+  color:black; /* Dark Blue text for contrast */
+}
+
+
+.bg-green {
+  background-color: #A9DFBF; /* Light Green */
+  color:black; /* Dark Green text for contrast */
+}
+/* General Styles */
+
+
+/* Events Grid Section */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Event Card */
+.event-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Background Colors */
+.bg-blue {
+    border-top: 6px solid #007bff;
+}
+
+.bg-pink {
+    border-top: 6px solid #e83e8c;
+}
+
+.bg-green {
+    border-top: 6px solid #28a745;
+}
+
+/* Event Details */
+.event-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-card .event-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0.75rem 0;
+    color: #666;
+}
+
+.event-card .event-date,
+.event-card .event-location {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.event-card b {
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .events-grid {
+        padding: 1rem;
+    }
+
+    .event-card {
+        padding: 1rem;
+    }
+
+    .event-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .event-card .event-description {
+        font-size: 0.9rem;
+    }
+}
+/* General Styles */
+
+
+/* Events Grid Section */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Event Card */
+.event-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent; /* For the gradient border */
+}
+
+/* Gradient Border */
+.bg-blue {
+    border-image: linear-gradient(45deg, #6c839d, #6c95c5) 1;
+}
+
+.bg-pink {
+    border-image: linear-gradient(45deg, #c7749b, #7c344c) 1;
+}
+
+.bg-green {
+    border-image: linear-gradient(45deg, #4f6654, #57744e) 1;
+}
+
+/* Event Card Hover Effects */
+.event-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #9c89c4, #5694b8);
+}
+
+/* Event Details */
+.event-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.event-card .event-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+    color: #555;
+}
+
+/* Icon Styling */
+.event-card .event-date,
+.event-card .event-location {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-card .event-date::before {
+    content: '\1F4C5'; /* Calendar icon */
+    font-size: 1rem;
+}
+
+.event-card .event-location::before {
+    content: '\1F4CD'; /* Location pin icon */
+    font-size: 1rem;
+}
+
+/* Subtle Background Texture */
+.event-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/white-wall.png');
+    opacity: 0.05;
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .events-grid {
+        padding: 1rem;
+    }
+
+    .event-card {
+        padding: 1rem;
+    }
+
+    .event-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .event-card .event-description {
+        font-size: 0.9rem;
+    }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img class="pfp" src="{% static 'volunteers/images/orgpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3>{{username}}</h3>
+        <br>
+        <p>Organization</p>
+      </div>
+      <nav class="nav-links">
+        <a  href="#" class="nav-item"><span ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+          </svg></span> <span style="color: gray;">Dashboard</span></a>
+          <a href="{% url 'org-create-event' %}" class="nav-item">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+              </svg>
+            </span>
+            Create Event
+          </a>
+          
+          <a href="{% url 'org_view_requests' %}" class="nav-item">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+              </svg>
+            </span>
+            View Requests
+          </a>
+          
+
+          <!-- Logout Button -->
+         <div class="log-out">
+          <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg></span> Logout
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <img class="logo-pic" src="{% static 'volunteers/images/VMS-Logo-resize.jpg' %}" alt="Logo">
+          
+        </div>
+        <div class="search-bar">
+          <form method="GET" action="{% url 'organization-dashboard' %}">
+            <input 
+              type="text" 
+              name="search" 
+              placeholder="Filter events..." 
+              value="{{ search_query|default:'' }}" 
+              class="search-input"
+            />
+            <button type="submit" class="search-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        
+      </header>
+
+      <section class="welcome-section">
+        <h2>Upcoming Events</h2>
+      </section>
+
+      <section class="events-grid">
+        {% if events %}
+            {% for event in events %}
+                <div class="event-card 
+                    {% if forloop.counter|divisibleby:3 %}
+                        bg-blue
+                    {% elif forloop.counter|divisibleby:2 %}
+                        bg-pink
+                    {% else %}
+                        bg-green
+                    {% endif %}
+                ">
+                    <h3>{{ event.event_name }}</h3>
+                    <p class="event-description">{{ event.description }}</p>
+                    <p class="event-date"><b>Date:</b> {{ event.event_date }}</p>
+                    <p class="event-location"><b>Location:</b> {{ event.location }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No events available at the moment.</p>
+        {% endif %}
+    </section>
+  </div>
+</body>
+</html>

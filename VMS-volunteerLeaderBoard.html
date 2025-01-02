@@ -1,0 +1,1138 @@
+
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace-Feedback</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+.form {
+  padding: 20px;
+  background: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-in-out;
+
+  margin-top: 40px;
+}
+
+.form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: gainsboro;
+}
+
+.form p {
+  text-align: center;
+  font-size: 1rem;
+  color: gainsboro;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-form label {
+  font-size: 1rem;
+  color: gainsboro;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+  font-size: 0.9rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  border-color: gainsboro;
+  box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 1.5rem;
+  color: gainsboro;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #f39c12;
+}
+
+.feedback-form .submit-btn {
+  background: gainsboro;  /* Light grey background */
+  color: black;  /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;  /* Transition for background and color */
+}
+
+.feedback-form .submit-btn:hover {
+  background-color: #dcdcdc; /* Slightly darker grey on hover */
+  color: black;  /* Text color remains black */
+}
+
+.feedback-form .submit-btn:active {
+  background-color: grey;  /* Dark grey background when clicked */
+  color: white;  /* White text on active */
+  transform: scale(0.98);  /* Slight shrinking effect on click for interaction */
+  transition: all 0.1s ease-in-out;  /* Short transition for active state */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Main content styles */
+.main-content {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #fff; /* Light text for contrast */
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 50px auto;
+    background: linear-gradient(135deg, #333, #121212); /* Dark gradient */
+}
+
+/* Header Section */
+h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Styling for the message under the heading */
+.msg p {
+    color: #bbb; /* Lighter grey text for description */
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Section */
+.form {
+    background-color: #1e1e1e; /* Dark form background */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Success/Error Messages */
+.success-message, .error-message {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.success-message {
+    background-color: #2d6a4f; /* Green for success */
+    color: #fff;
+}
+
+.error-message {
+    background-color: #e63946; /* Red for errors */
+    color: #fff;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input, form select, form textarea {
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #444; /* Dark borders */
+    outline: none;
+    background-color: #2c2c2c; /* Dark input background */
+    color: #fff; /* White text in input fields */
+    transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #FF1493; /* Focus color */
+    box-shadow: 0 0 8px rgba(255, 20, 147, 0.7); /* Pinkish glow on focus */
+}
+
+/* Submit Button Styling */
+form button {
+    background-color: #3e383b; /* Pinkish color */
+    color: #fff;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #5a5256; /* Lighter pink on hover */
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .form {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        gap: 15px;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+}
+
+/* General Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #1c1c1c; /* Darker background */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Header Section */
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.form-header p {
+    font-size: 1.1em;
+    color: #b3b3b3;
+    opacity: 0;
+    animation: fadeIn 0.7s forwards 0.2s;
+}
+
+/* Success and Error Messages */
+.alert {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.success-alert {
+    background-color: #4caf50; /* Success Green */
+    color: #fff;
+}
+
+.error-alert {
+    background-color: #f44336; /* Error Red */
+    color: #fff;
+}
+
+/* Feedback Form Fields */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+}
+
+.feedback-form p {
+    font-size: 1.1em;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease; /* Smooth transition for focus */
+}
+
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    border-color: #81c784; /* Light Green Border on Focus */
+    background-color: #444; /* Slightly lighter background on focus */
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #388e3c; /* Dark Green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Subtle hover effect */
+}
+
+.submit-btn:hover {
+    background-color: #81c784; /* Light Green on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+.submit-btn:active {
+    background-color: #388e3c; /* Back to dark green on click */
+    transform: translateY(2px); /* Press effect */
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.form-container {
+        background: linear-gradient(135deg, #0a0608, #d9a7c7);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 30px auto;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        transform: translateY(30px);
+        opacity: 0;
+        animation: fadeIn 1s forwards 0.5s;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Header Section */
+    .form-header {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+    .form-header h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .form-header p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    /* Styling for Alerts (Success/Errors) */
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .success-alert {
+        background-color: #4CAF50;
+        color: white;
+        animation: slideIn 1s ease-out;
+    }
+
+    .error-alert {
+        background-color: #FF6F61;
+        color: white;
+        animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    /* Form Styling */
+    .feedback-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Input Fields and Textarea */
+    .feedback-form input,
+    .feedback-form select,
+    .feedback-form textarea {
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+    .feedback-form input:focus,
+    .feedback-form select:focus,
+    .feedback-form textarea:focus {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        outline: none;
+    }
+
+    .feedback-form textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        background: linear-gradient(135deg, #5c2f2f, #814f5e);
+        color: #fff;
+        font-size: 18px;
+        padding: 15px 25px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+        align-self: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .submit-btn:hover {
+        background: linear-gradient(135deg, #976674, #674444);
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit-btn:active {
+        background: linear-gradient(135deg, #ff6b6b, #b47083);
+        transform: scale(0.98);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+        }
+
+        .form-header p {
+            font-size: 16px;
+        }
+
+        .feedback-form input,
+        .feedback-form select,
+        .feedback-form textarea {
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            font-size: 16px;
+        }
+    }
+    section {
+  padding: 20px;
+margin-left: 100px;
+  border-radius: 8px;
+  width: 800px;
+}
+
+.leaderboard {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+/* Hover effect for the leaderboard */
+.leaderboard:hover {
+  transform: scale(1.02);
+}
+
+/* Header styling */
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 28px;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table headers */
+th {
+  font-size: 18px;
+  padding: 15px;
+  background-color: #5d3c71ee;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for table headers */
+th:hover {
+  background-color: #4b437a;
+}
+
+/* Table row cells */
+td {
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for rows */
+tr:nth-child(even):hover, tr:nth-child(odd):hover {
+  background-color: #f1f1f1;
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Fade-in animation for header */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* General styling for the leaderboard */
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 32px;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Adding a glowing effect to the header */
+h2::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #5d3c71;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    background: #5d3c71;
+    box-shadow: 0 0 8px #5d3c71;
+  }
+  100% {
+    background: #4CAF50;
+    box-shadow: 0 0 20px #4CAF50;
+  }
+}
+
+/* Container for leaderboard */
+.leaderboard {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for the leaderboard */
+.leaderboard:hover {
+  transform: scale(1.05);
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Table headers */
+th {
+  font-size: 18px;
+  padding: 15px;
+  background-color: #5d3c71ee;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect for table headers */
+th:hover {
+  background-color: #4b437a;
+  transform: translateY(-2px);
+}
+
+/* Table row cells */
+td {
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+  border-right: 1px solid #ddd;
+}
+
+/* Hover effect for rows */
+tr:nth-child(even):hover, tr:nth-child(odd):hover {
+  background-color: #f7f7f7;
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Table styling - Final touches */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Fade-in animation for header */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Extra effects for rows when hovered */
+tr:nth-child(odd):hover, tr:nth-child(even):hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Additional transition effects for table cells */
+td:hover {
+  background-color: #e0e0e0;
+  transform: translateX(2px);
+}
+
+/* Styling the entire table to give a more clean look */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+}
+
+/* Styling for rank icons or trophy */
+th, td {
+  padding: 15px;
+}
+
+th {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Styling the cells */
+td {
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
+  color: #000000;
+}
+/* General styling for the leaderboard */
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  color: #687f96;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Adding a glowing underline effect to the header */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #4CAF50;
+  animation: glow 1.5s ease-in-out infinite alternate;
+  color: #0a0608;
+}
+
+@keyframes glow {
+  0% {
+    background: #1f205b;
+    box-shadow: 0 0 10px #412c60;
+  }
+  100% {
+    background: #7e669c;
+    box-shadow: 0 0 20px #8275bd;
+  }
+}
+
+/* Container for leaderboard */
+.leaderboard {
+  width: 85%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  border-top: 5px solid #5552a9;
+}
+
+/* Hover effect for the leaderboard */
+.leaderboard:hover {
+  transform: scale(1.05);
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Table headers */
+th {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  padding: 18px 25px;
+  background-color: #b2b4ef;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect for table headers */
+th:hover {
+  background-color: #5b4caf;
+  transform: translateY(-2px);
+}
+
+/* Table row cells */
+td {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 15px 20px;
+  text-align: left;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for rows */
+tr:nth-child(even):hover, tr:nth-child(odd):hover {
+  background-color: #f7f7f7;
+  transform: translateY(-1px);
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Styling for rank icons or trophy */
+th, td {
+  padding: 18px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #34495E;
+}
+
+/* Table styling - Final touches */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Fade-in animation for header */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Additional transition effects for table cells */
+td:hover {
+  background-color: #ecf0f1;
+  transform: translateX(2px);
+}
+
+/* Final polish for entire table */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+  margin-bottom: 20px;
+}
+
+td, th {
+  padding: 15px 20px;
+  text-align: center;
+}
+
+td {
+  color: #7f8c8d;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Styling for the table with finer lines */
+td {
+  border-right: 1px solid #ddd;
+}
+
+/* Making the last column fit perfectly */
+td:last-child {
+  border-right: none;
+}
+
+/* Making the leaderboard container more elegant */
+.leaderboard {
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Header text-shadow effect */
+h2 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transition on hover for all table rows */
+tr:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img class="pfp" src="{% static 'volunteers/images/adminpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3>{{ username }}</h3>
+        <br>
+        <p>Volunteer</p>
+      </div>
+      <nav class="nav-links">
+        <a  href="{% url 'volunteer-dashboard' %}" class="nav-item"><span ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+          </svg></span> <span >Dashboard</span></a>
+        <a href="{% url 'volunteer-past-experience'%}" class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
+            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
+            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
+          </svg></span> <span >Past Experience</span></a>
+        <a href="{% url 'volunteer-feedback' %}" class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+          </svg></span> <span >Feedback</span></a>
+          <a href="#" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+          </svg><span style="color: gray;">Leaderboard</span></a>
+          <a href="{% url 'show_notifications'%}"class="nav-item"
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+        </svg>Notifications</span></a>
+          <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg></span> Logout
+          </a>
+      </nav>
+    </aside>
+
+    
+    <!-- Header Section -->
+    <section>
+      <div class="leaderboard">
+          <h2>🏆 Leaderboard 🏆</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>🏅 Rank</th>
+                      <th>👤 Name</th>
+                      <th>💯 Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for entry in leaderboard %}
+                  <tr>
+                      <td>{{ entry.rank }}</td>
+                      <td>{{ entry.username }}</td>
+                      <td>{{ entry.score }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </section>
+  
+    
+
+      
+  </div>
+</body>
+</html>
+
+

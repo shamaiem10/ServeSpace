@@ -1,0 +1,664 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace Dashboard-Take Tasks</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo-pic{
+    width: 200px;
+    height:50px;
+
+}
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+/* Remove default link styles if divs are wrapped in <a> tags */
+a.event-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+/* Main Content */
+.event-header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.event-header p {
+  color: #555;
+}
+
+.event-details {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Tasks Section */
+.tasks {
+  margin-top: 30px;
+}
+
+.task-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-highlight {
+  background-color: #f4c7c3;
+  width: 10px;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.card-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.task-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.task-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.take-btn {
+  background-color: black;
+  color: white;
+}
+
+/* Main Content */
+.event-header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.event-header p {
+  color: #555;
+}
+
+.event-details {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Tasks Section */
+.tasks {
+  margin-top: 30px;
+}
+
+.task-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:880px;
+}
+
+/* Card hover effect */
+.task-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight with transition */
+.card-highlight {
+  background-color: #f4c7c3;
+  width: 10px;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: background-color 0.3s ease;
+}
+
+.task-card:hover .card-highlight {
+  background-color: #f28d8a;
+}
+
+/* Task Content */
+.card-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.task-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.task-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button with transition */
+.btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.take-btn {
+  background-color: black;
+  color: white;
+  height:70px;
+  width:70px;
+  border-radius: 45px;
+}
+
+.take-btn:hover {
+  transform: scale(1.1);
+  background-color: #444;
+}
+
+
+.log-out {
+    margin-top: auto; /* This ensures the logout button is at the bottom */
+}
+
+/* Popup Message Box styles */
+.popup-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 250px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000; /* Makes sure it appears on top of other content */
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-content p {
+    margin: 0;
+}
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.close-btn:hover {
+    background-color: #e53935;
+}
+
+/* Animation for the popup (fade in) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Make the popup appear with animation */
+.popup-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+/* Popup Message Box styles */
+.popup-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 250px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000; /* Makes sure it appears on top of other content */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-content p {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.close-btn {
+    background-color: #c5362c;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.close-btn:hover {
+    background-color: #e53935;
+}
+
+/* Animation for the popup (fade in) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Make the popup appear with animation */
+.popup-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img class="pfp" src="{% static 'volunteers/images/adminpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3>{{ username }}</h3>
+        <br>
+        <p>Volunteer</p>
+      </div>
+      <nav class="nav-links">
+        <a  href="#" class="nav-item"><span ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+          </svg></span> <span style="color: gray;">Dashboard</span></a>
+        <a href="{% url 'volunteer-past-experience' %}" class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
+            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
+            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
+          </svg></span> Past Experience</a>
+        <a href="{% url 'volunteer-feedback' %}" class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+          </svg></span> Feedback</a>
+          <a href="{% url 'volunteer-leaderboard' %}" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+          </svg><span >Leaderboard</span></a>
+          <a href="{% url 'show_notifications'%}"class="nav-item"
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+        </svg>Notifications</span></a>
+          <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg></span> Logout
+          </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <img class="logo-pic" src="{% static 'volunteers/images/VMS-Logo-resize.jpg' %}" alt="Logo">
+          
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Filter..." />
+          <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg></button>
+        </div>
+      </header><section>
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="event-header">
+            <!-- Display the event name, organization name, and other details -->
+            <h1>{{ event.event_name }}</h1>
+            <p>{{ event.org.name }}</p>  <!-- Assuming 'org' is a ForeignKey to Organization model, and 'name' is the field in the Organization model -->
+            <div class="event-details">
+              <p><strong>Date:</strong> {{ event.event_date|date:"d-m-Y" }}</p>  <!-- Formatting the date -->
+              <p><strong>Time:</strong> 12:00 am - 8:00 pm</p>  <!-- You might want to pull time details if they're stored in the event model -->
+              <p><strong>Venue:</strong> {{ event.location }}</p>
+            </div>
+          </div>
+        </div>
+       
+         
+      <section class="tasks">
+        {% if tasks %}
+            <div class="tasks-container">
+                <!-- Display the event name at the top -->
+                {% for task in tasks %}
+                    <div class="task-card">
+                        <div class="card-highlight"></div>
+                        <div class="card-content">
+                            <h3>{{ task.title }}</h3>
+                            <p><strong>Description:</strong> {{ task.description }}</p>
+                        </div>
+            
+                        <!-- Form to handle the task request -->
+                        <form id="task-form-{{ task.id }}" onsubmit="submitTask(event, '{{ username }}', '{{ event.event_name }}', '{{ task.title }}', '{{ user_id }}')">
+                            {% csrf_token %}
+                            <input type="hidden" name="task_id" value="{{ task.id }}">
+                            <input type="hidden" name="organization_id" value="{{ task.event.organization.id }}">
+                            <button type="submit" class="btn take-btn">Join</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No tasks available for this event.</p>
+        {% endif %}
+        <div id="popup-message" class="popup-message">
+          <div class="popup-content">
+              <span class="close-btn" onclick="closePopup()">&times;</span>
+              <p>⏰ Enough with the laziness! Let’s get off the couch and do some volunteer work! 💪</p>
+              <p>Your community needs you, and it’s time to make a difference! 🌍</p>
+          </div>
+      </div>
+      
+      <script >
+// Function to show the popup message
+function showPopup() {
+    const popup = document.getElementById('popup-message');
+    popup.classList.add('show');
+}
+
+// Function to close the popup message
+function closePopup() {
+    const popup = document.getElementById('popup-message');
+    popup.classList.remove('show');
+}
+
+// Trigger the popup to show after 3 seconds for demonstration (you can modify this part as needed)
+window.onload = function() {
+    setTimeout(showPopup, 3000); // Shows the popup after 3 seconds
+};
+
+      </script>
+    </section>
+    <script>
+      function submitTask(event, username, eventName, taskTitle, userId) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Check if username, eventName, taskTitle, and userId exist
+    if (username && eventName && taskTitle && userId) {
+        // Show an initial alert with task details
+        alert(`You clicked "Take"! Username: ${username}, Event: ${eventName}, Task: ${taskTitle}, User ID: ${userId}`);
+
+        // Perform AJAX request to submit the form data
+        const form = event.target;
+        const formData = new FormData(form);
+
+        // Append additional data to the form if needed
+        formData.append('task_title', taskTitle);
+        formData.append('event_name', eventName);
+        formData.append('username', username); // Send username too
+        formData.append('user_id', userId); // Send user_id too
+
+        fetch('/submit-task/', { // Adjust the URL based on your back-end route
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then(data => {
+            // Check if the response indicates success
+            if (data.success) {
+                // Show an alert with the retrieved task ID, event ID, org ID, and user ID
+                alert(`Task has been successfully taken! Task ID: ${data.task_id}, Event ID: ${data.event_id}, Org ID: ${data.org_id}, User ID: ${data.user_id}`);
+
+                // Now, send the data to the backend to record the task taken
+                fetch('/volunteer-take-task/', {  // Adjust the URL for your backend endpoint
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task_id: data.task_id,
+                        event_id: data.event_id,
+                        org_id: data.org_id,
+                        user_id: data.user_id,
+                    })
+                })
+                .then(response => response.json())
+                .then(responseData => {
+                    if (responseData.success) {
+                        alert('Task data successfully recorded!');
+                    } else {
+                        alert('There was an issue recording the task.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error submitting task data: ' + error.message);
+                });
+            } else {
+                // Handle error in the response from the server
+                alert('There was an issue with taking the task: ' + (data.message || 'Unknown error.'));
+            }
+        })
+        .catch(error => {
+            // Handle fetch errors
+            console.error('Error:', error);
+            alert('Error submitting the task: ' + error.message);
+        });
+    } else {
+        alert("Username, event name, task name, or user ID could not be retrieved.");
+    }
+}
+
+  </script>
+  
+      
+        
+  </div>
+</body>
+
+
+</html>
+

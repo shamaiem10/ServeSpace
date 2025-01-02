@@ -1,0 +1,518 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo-pic{
+    width: 200px;
+    height:50px;
+
+}
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Remove default link styles if divs are wrapped in <a> tags */
+a.event-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+
+
+            .form-container {
+                background: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                width: 800px;
+                padding: 20px;
+                margin: 0 auto;
+                font-family: Arial, sans-serif;
+            }
+            .form-container h2 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+            }
+            .form-group {
+                margin-bottom: 15px;
+            }
+            .form-group label {
+                display: block;
+                color: #555;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            .form-group input, 
+            .form-group textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+            .form-group textarea {
+                resize: none;
+                height: 80px;
+            }
+            .form-button {
+                text-align: center;
+            }
+            .form-button button {
+                background: black;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.1s;
+            }
+            .form-button button:hover {
+                background: black;
+            }
+            .form-button button:active {
+                background: grey;
+            }
+            
+
+
+/* Past Experience Section */
+.events-grid {
+  margin-top: 20px;
+  padding: 20px;
+
+}
+
+.events-grid h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.events-grid p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Experience Card Styling */
+.experience-card {
+  display: flex;
+ 
+  
+  width:400px;
+  align-items: flex-start;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight Colors for Cards */
+.card-highlight {
+  width: 10px;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.card-highlight.pink {
+  background-color: #f4c7c3;
+}
+
+.card-highlight.green {
+  background-color: #c3e6cb;
+}
+
+.card-highlight.purple {
+  background-color: #d8bfd8;
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+}
+
+.card-content h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+.experience-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+}
+
+.card-highlight {
+  width: 5px;
+  height: 100%;
+  background-color: purple;
+  margin-right: 16px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-button {
+    margin-top:13%;
+  padding: 8px 16px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height:50px;
+  width:50px;
+  
+}
+
+.card-button:hover {
+  background-color: darkviolet;
+}
+/* General card styling */
+.experience-card {
+  position: relative;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for the card */
+.experience-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight bar animation */
+.card-highlight {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #7f5af0, #2cb67d, #7f5af0);
+  background-size: 200%;
+  animation: moveGradient 2s linear infinite;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* Card content styling */
+.card-content {
+  padding: 15px;
+  text-align: left;
+}
+
+.card-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+/* Button styling */
+.card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 8px 12px;
+  background-color: #7f5af0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.card-button:hover {
+  transform: scale(1.1);
+  background-color: #2cb67d;
+}
+
+/* SVG animation */
+.card-button svg {
+  transition: transform 0.2s;
+}
+
+.card-button:hover svg {
+  transform: rotate(360deg);
+}
+
+       
+  </style>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img class="pfp" src="{% static 'volunteers/images/orgpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3>{{username}}</h3>
+        <br>
+        <p>Organization</p>
+      </div>
+      <nav class="nav-links">
+        <a href="{% url 'organization-dashboard' %}" class="nav-item">
+          <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+              </svg>
+          </span>
+          <span>Dashboard</span>
+      </a>
+      
+        <a href="{% url 'org-create-event' %}" class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+          </svg></span > <span >Create Event</span></a>
+        <a  class="nav-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+          </svg></span> <span style="color: gray;">View Requests</span></a>
+          <!-- Logout Button -->
+         <div class="log-out">
+          <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg></span> Logout
+          </a>
+        </div>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <section class="welcome-section">
+          <h2>Volunteer Requests</h2>
+          <p>Manage Participation – Volunteers Eager to Support Your Event</p>
+      </section>
+  
+      <section class="events-grid">
+          {% if org_view_requests %}
+              {% for volunteer in org_view_requests %}
+                  <div class="experience-card">
+                      <div class="card-highlight {{ volunteer.organization.color_class }}"></div>
+                      <div class="card-content">
+                          <h3>{{ volunteer.user.volunteer.full_name }}</h3>  <!-- Access volunteer's full name -->
+                          <p><strong>Event:</strong> {{ volunteer.event.event_name }}</p>
+                          <p><strong>Task:</strong> {{ volunteer.task.title }}</p>
+                          <p><strong>Skills:</strong> {{ volunteer.user.volunteer.skills }}</p>  <!-- Access volunteer's skills -->
+                          <p><strong>Contact:</strong> {{ volunteer.user.volunteer.contact_number }}</p>  <!-- Access volunteer's contact -->
+                      </div>
+                      <button 
+                          class="card-button" 
+                          data-task-id="{{ volunteer.task_id }}" 
+                          data-volunteer-id="{{ volunteer.user.volunteer.volunteer_id }}"
+                          aria-label="Assign Task to {{ volunteer.user.volunteer.full_name }}"
+                          {% if volunteer.status == 'Assigned' %}disabled style="pointer-events: none; background-color: grey;"{% endif %}
+                          onclick="assignTask(this)">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square-fill">
+                              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
+                          </svg>
+                      </button>
+                  </div>
+              {% endfor %}
+          {% else %}
+              <p>No volunteer requests for the organization found.</p>
+          {% endif %}
+      </section>
+  </main>
+  
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Event listener for the task assignment button
+          document.querySelectorAll('.card-button').forEach(button => {
+              button.addEventListener('click', function () {
+                  const taskId = this.getAttribute('data-task-id');
+                  const volunteerId = this.getAttribute('data-volunteer-id');
+                  
+                  // Debugging messages to confirm values
+                  console.log('Button clicked!');
+                  console.log('Task ID:', taskId);
+                  console.log('Volunteer ID:', volunteerId);
+  
+                  // Validate that taskId and volunteerId exist
+                  if (!taskId || !volunteerId) {
+                      alert('Task ID or Volunteer ID is missing.');
+                      return;
+                  }
+  
+                  // Send the request to assign the task
+                  fetch('/assign_task/', {
+                      method: 'POST',
+                      headers: {
+                          'X-CSRFToken': '{{ csrf_token }}',  // CSRF token for Django security
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ task_id: taskId, volunteer_id: volunteerId }),
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.status === "success") {
+                          this.disabled = true;  // Disable the button to prevent further clicks
+                          this.style.pointerEvents = 'none';  // Prevent interactions
+                          this.style.backgroundColor = 'grey';  // Change button color to grey
+                      } else {
+                          alert(data.message);  // Show error message if any
+                      }
+                  })
+                  .catch(error => console.error('Error:', error));  // Handle fetch errors
+              });
+          });
+      });
+  </script>
+  
+  
+</div></body></html>  

@@ -1,0 +1,188 @@
+{% load static %}
+<html>
+<head>
+    <title>VMS_Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Public+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            background-color: #F4EFEF;
+            font-family: 'Cambria', Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 15%;
+        }
+
+        .logo {
+            height: 130px;
+            margin-left: 50%;
+        }
+
+        .horizontal-menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+            font-weight: bold;
+        }
+
+        .horizontal-menu li {
+            display: inline;
+        }
+
+        .horizontal-menu a {
+            text-decoration: none;
+            color: grey;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .horizontal-menu a:hover {
+            text-decoration: underline;
+            color: black;
+        }
+
+        .contact {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-color: black;
+            color: black;
+        }
+
+        /* Main Section */
+        .g11 {
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            align-items: center;
+            margin-top: 25px;
+            padding: 20px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 90px;
+            background-color: black;
+            color: white;
+            height: 600px;
+            margin-top: 100px;
+        }
+
+        .m1, .m2, .m3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+
+        .m1, .m3 {
+            margin-top: -70px;
+        }
+
+        .m2 {
+            margin-top: -10px;
+        }
+
+        .image-div:hover {
+            cursor: pointer;
+        }
+
+        /* Text and List Styling */
+        .text-div {
+            text-align: justify;
+        }
+
+        .text-div ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-decoration: wavy;
+            font-family: sans-serif;
+        }
+
+        h3 {
+            margin-left: 5px;
+        }
+
+        .warning {
+            color: #FF6347; /* Warning message color */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div style="width:85%">
+            <img class="logo" src="{% static 'volunteers/images/VMS-Logo.jpg' %}">
+        </div>
+        <div>
+            <ul class="horizontal-menu">
+                <li><a href="{% url 'landing' %}" target="_blank">Home</a></li>
+                <li><a href="{% url 'about' %}" target="_blank">About</a></li>
+                <li class="contact">Contact</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="g11">
+        <h2>GET IN TOUCH</h2>
+        <p>Contact My Very Busy Office Staff (Definitely Not Me)</p>
+        <div class="main">
+            <div class="m1">
+                <div class="image-div">
+                    <img src="{% static 'volunteers/images/location.png' %}" alt="Location Icon">
+                </div>
+                <h3>ADDRESS</h3>
+                <div class="text-div">
+                    <p><b>Head Office:</b> Cr-10 SEECS NUST H-12, ISB, PAKISTAN</p>
+                </div>
+            </div>
+        
+            <div class="m2">
+                <div class="image-div">
+                    <img src="{% static 'volunteers/images/phone.png' %}" alt="Phone Icon">
+                </div>
+                <h3>PHONE</h3>
+                <div class="text-div">
+                    <p><b>CEO :</b> +92-12345-78 </p>
+                    <p><b>Manager:</b> +92-34234-43 (Please hold... forever...)</p>
+                    <p><b>Help-Center (We're Trying, Okay?):</b> +92-534-43</p>
+                </div>
+            </div>
+        
+            <div class="m3">
+                <div class="image-div">
+                    <img src="{% static 'volunteers/images/email.png' %}" alt="Email Icon">
+                </div>
+                <h3>EMAIL</h3>
+                <div class="text-div">
+                    <ul>
+                        <li><b>📩 General Complaints:</b> talktothewall@idontcare.com</li>
+                        <li><b>💸 Business Inquiries:</b> makeitrain@cashonly.com</li>
+                    </ul>
+                </div>
+                <p class="warning">WARNING: Sending boring emails may result in immediate ghosting... !</p>
+            </div>
+        </div>
+        
+</body>
+</html>

@@ -1,0 +1,230 @@
+{% load static %}
+<html>
+    <head>
+        <title>VMS_Home</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+                body{
+                  
+    
+
+                    background-color: F4EFEF;
+                   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+                .nav-bar{
+                 
+                    display:flex;
+                    flex-direction: row;
+                    height:15%;
+                    justify-content:center;
+                    align-items: center;
+                }
+                .logo{
+                   height:130px;
+                   margin-left: 50%;
+
+                }
+
+                .horizontal-menu {
+                    list-style-type: none; /* Removes bullets */
+                    padding: 0; /* Removes padding */
+                    margin:0; /* Removes margin */
+                    display: flex; /* Aligns items horizontally */
+                    gap: 15px; /* Adds spacing between items (optional) */
+                    font-weight: bold;
+                    padding-right: 20px;
+                    
+                }
+
+                .horizontal-menu li {
+                    display: inline; /* Ensures the items are inline */
+
+                }
+                li:hover{
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+
+/* Styling for the active (Home) item */
+.li.active {
+    color: black; /* Dark black color */
+    text-decoration: underline; /* Always underlined */
+    font-weight: bold; /* Optional: Make it stand out more */
+}
+
+/* Hover effect for non-active items */
+ li:not(.active):hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: black; /* Light black on hover */
+}
+
+
+                .mid-section{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 35px;
+                   
+                }
+                .image-div{
+                    display:flex;
+                    flex-direction: row;
+                    width:100%;
+                    height:170px;
+                    justify-content: center;
+                    margin-top: 30px;
+                    
+                  
+                    
+                }
+                
+
+
+.main{
+    display:flex;
+    flex-direction: column;
+   background-color: white;
+    margin-top: 25px;
+    height:390px;
+ 
+    align-items: center;
+}
+
+.m2{
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+    gap: 60px;
+    padding-left: 150px;
+}
+
+.p1 {
+    width: 60%; /* Set the width you want (e.g., 80% of the parent container) */
+    max-width: 800px; /* Optional: Set a maximum width */
+    margin: 0 auto; /* Centers the paragraph horizontally */
+    line-height: 1.6; /* Optional: Adjusts the line height for readability */
+    text-align: justify; /* Optional: Justifies the text for a neat appearance */
+    
+}
+.heading{
+    padding-left: 160px;
+}
+
+.q-div {
+    height: 210px; /* Adjust the height of the circle */
+    width: 210px; /* Ensure the width matches the height to create a perfect circle */
+    display: flex;
+    align-items: center; /* Centers text vertically */
+    justify-content: center; /* Centers text horizontally */
+    border-radius: 50%; /* Makes the div a circle */
+    text-align: center; /* Centers text inside the circle */
+    padding: 20px; /* Optional: Adds padding around the text */
+    overflow: hidden; /* Ensures text doesn't overflow the circle */
+    background-color: lightgray; /* Optional: Gives a background color to the circle */
+}
+
+.q-div p {
+    margin: 0; /* Removes any default margin from the paragraph */
+    word-wrap: break-word; /* Ensures text breaks properly if it's too long */
+}.about {
+    text-decoration: underline;
+    text-decoration-thickness: 3px; /* Adjust thickness to make it bold */
+    text-decoration-color: black; /* Set underline color to black */
+    color: black; /* Set the text color to black by default */
+}
+
+.about-click a {
+    text-decoration: none;
+    color: grey; /* Default color is grey for other links */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.about-click a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    color: black; /* Change color to black on hover */
+}
+
+        </style>
+    </head>
+
+
+
+
+    <body>
+
+        <div class="nav-bar">
+            <div style=" width:85%">
+            <img class="logo" src="{% static 'volunteers/images/VMS-Logo.jpg' %}">
+             </div>
+
+             <div>
+                <ul class="horizontal-menu">
+                    <li class="about-click">
+                        <a href="{% url 'landing' %}" target="_blank">Home</a>
+                    </li>
+                    <li class="about">
+                        About
+                    </li>
+                    <li class="about-click">
+                        <a href="{% url 'contact' %}" target="_blank">Contact</a>
+                    </li>
+                </ul>
+                
+                
+             </div>
+        </div>
+
+
+
+
+
+
+<div class="main">
+
+    <div class="m1">
+        <img style="width:1240px" src="{% static 'volunteers/images/Screenshot 2024-11-16 230831.png' %}">
+    </div>
+
+
+    <div class="m2">
+        <div class="q-div" style="background-color:  F4EFEF;">
+            <h3>Together, we can turn compassion into action</h3>
+        </div>
+        <div >
+            <h2 class="heading">ABOUT US</h2>
+            <p class="p1">
+                We are dedicated to connecting passionate volunteers with organizations that create meaningful impact. Our platform simplifies the process of task management, event coordination, and feedback collection, making it easier for volunteers to contribute and for organizations to achieve their goals. We aim to build a stronger, more connected community driven by shared purpose and social responsibility.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="m3">
+        <img style="width:1240px"src="{% static 'volunteers/images/Screenshot 2024-11-16 2300522.png' %}">
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+       
+
+
+    </body>
+</html>

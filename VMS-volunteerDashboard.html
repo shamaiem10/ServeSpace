@@ -1,0 +1,566 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServeSpace Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+
+
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Public Sans', sans-serif; 
+  background-color: #F4EFEF;
+}
+
+/* Container */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 20px;
+ background-color:  F4EFEF;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo-pic{
+    width: 200px;
+    height:50px;
+
+}
+.pfp{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+}
+.event-card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Remove default link styles if divs are wrapped in <a> tags */
+a.event-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.bg-blue {
+    background-color: #2C8E4F;
+}
+
+.bg-pink {
+    background-color: #FF6F61;
+}
+
+.bg-blue {
+    background-color: #AED6F1; /* Light Blue */
+    color: #1F3A52; /* Dark Blue text for contrast */
+}
+
+.bg-pink {
+    background-color: #FF6F61; /* Light Pink */
+    color: #C0392B; /* Dark Red text for contrast */
+}
+
+.bg-green {
+    background-color: #A9DFBF; /* Light Green */
+    color: #1D8348; /* Dark Green text for contrast */
+}
+/* General styles for the events grid */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+}
+
+.event-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Center-align text for the event name */
+    color: black; /* Make text color black */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.event-card:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Background colors for event cards */
+.bg-blue {
+    background-color: #d37e78; /* Light Blue */
+}
+
+.bg-pink {
+    background-color: #FADBD8; /* Light Pink */
+}
+
+.bg-green {
+    background-color: #6A7F9B; /* Light Green */
+}
+
+/* Ensure text is well aligned within the event card */
+.event-description, .event-date, .event-location {
+    margin: 10px 0;
+    text-align: left; /* Left-align the description, date, and location */
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center; /* Keep the event name centered */
+}
+
+/* Optional: Add responsiveness */
+@media (max-width: 768px) {
+    .event-card {
+        padding: 15px;
+    }
+}
+/* Remove default link styles */
+.event-link {
+    text-decoration: none; /* No underline */
+    color: inherit; /* Inherit text color */
+}
+
+/* Optionally, you can add a hover effect on the entire event card */
+.event-card:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+    cursor: pointer; /* Show pointer cursor to indicate clickability */
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.nav-links {
+    flex-grow: 1; /* This will push the logout button to the bottom */
+}
+
+.events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        justify-items: center;
+    }
+
+    /* Event Card Styles */
+    .event-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Event Card Hover Effects */
+    .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card Title Styling */
+    .event-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    /* Event Description */
+    .event-description {
+        font-size: 14px;
+        font-weight: 300;
+        color: #fff;
+        margin-bottom: 15px;
+        opacity: 0.8;
+    }
+
+    /* Event Date and Location */
+    .event-date, .event-location {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    .event-location {
+        font-style: italic;
+    }
+
+    /* Background Colors for Cards */
+    .bg-blue {
+        background: linear-gradient(135deg, #5b6481, #1e3c72);
+    }
+
+    .bg-pink {
+        background: linear-gradient(135deg, #573f47, #8e2447);
+    }
+
+    .bg-green {
+        background: linear-gradient(135deg, #2b452d, #388e3c);
+    }
+
+    /* Hover Effects for Links */
+    .event-link {
+        text-decoration: none;
+    }
+
+    /* Media Query for Responsive Design */
+    @media (max-width: 768px) {
+        .events-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .event-card {
+            padding: 15px;
+        }
+
+        .event-card h3 {
+            font-size: 20px;
+        }
+
+        .event-description {
+            font-size: 12px;
+        }
+    }
+/* Pop-up styling */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  animation: pop-up 0.5s ease-in-out;
+}
+
+.popup h2 {
+  font-size: 24px;
+  color: #ff6347;
+}
+
+.popup p {
+  font-size: 18px;
+  color: #333;
+  margin: 15px 0;
+}
+
+.popup-button {
+  background-color: #ff6347;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-button:hover {
+  background-color: #ff4500;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img class="pfp" src="{% static 'volunteers/images/adminpfp.jpg' %}" alt="Profile Picture" class="profile-img">
+        <h3>{{ username }}</h3>
+        <br>
+        <p>Volunteer</p>
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="nav-item">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+          </svg></span> <span style="color: gray;">Dashboard</span>
+        </a>
+        <a href="{% url 'volunteer-past-experience' %}" class="nav-item">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
+            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
+            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
+          </svg></span> Past Experience
+        </a>
+        <a href="{% url 'volunteer-feedback' %}" class="nav-item">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+          </svg></span> Feedback
+        </a>
+        <a href="{% url 'volunteer-leaderboard' %}" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+          <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+        </svg>LeaderBoard</a>
+        <a href="{% url 'show_notifications'%}"class="nav-item"
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+        </svg>Notifications</span></a>
+        <!-- Logout Button -->
+         <div class="log-out">
+        <a href="{% url 'join-button-options' %}" class="nav-item" style="color: red; font-weight: bold;">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+          </svg></span> Logout
+        </a>
+
+      </div>
+      </nav>
+    </aside>
+    
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <img class="logo-pic" src="{% static 'volunteers/images/VMS-Logo-resize.jpg' %}" alt="Logo">
+        </div>
+        <div class="search-bar">
+          <form method="GET" action="{% url 'volunteer-dashboard' %}">
+            <input type="text" name="search_term" placeholder="Filter by name, location, or description..." value="{{ request.GET.search_term }}">
+            <button type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </header>
+    
+      <section class="welcome-section">
+        <h2>Hello, {{ username }}!</h2>
+        <!-- Pop-up container -->
+        <div class="popup" id="funny-popup">
+          <div class="popup-content">
+            <span class="popup-close" id="close-popup">&times;</span>
+            <h2>Alert! 🚨</h2>
+            <p>Hey {{ username }}! You just volunteered so hard, your name is now trending on the Volunteerverse! 🚀✨</p>
+            <p>Even aliens are calling you a "human with superpowers!" 👽💪</p>
+            <button class="popup-button" id="popup-button">I'm ready for world domination! 🌍🔥</button>
+          </div>
+        </div>
+      </section>
+      
+    
+      <section class="events-grid">
+        {% if events %}
+          {% for event in events %}
+            <a href="{% url 'volunteer-take-tasks' event.event_name %}" class="event-link">
+              <div class="event-card 
+                  {% if forloop.counter|divisibleby:3 %} bg-blue
+                  {% elif forloop.counter|divisibleby:2 %} bg-pink
+                  {% else %} bg-green
+                  {% endif %}">
+                <h3>{{ event.event_name }}</h3>
+                <p class="event-description">{{ event.description }}</p>
+                <p class="event-date"><b>Date:</b> {{ event.event_date }}</p>
+                <p class="event-location"><b>Location:</b> {{ event.location }}</p>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p>No events available at the moment.</p>
+        {% endif %}
+      </section>
+    </main>
+    
+    
+</body>
+<script>// Show the pop-up after a delay
+// Show the pop-up after a delay, but only once
+window.onload = function() {
+  // Check if the pop-up has already been shown
+  if (!localStorage.getItem('popupShown')) {
+    // Show the pop-up after 5 seconds
+    setTimeout(function() {
+      document.getElementById('funny-popup').style.display = 'flex';
+    }, 5000); // Shows after 5 seconds
+
+    // Mark the pop-up as shown in localStorage
+    localStorage.setItem('popupShown', 'true');
+  }
+};
+
+// Close the pop-up when the close button is clicked
+document.getElementById('close-popup').onclick = function() {
+  document.getElementById('funny-popup').style.display = 'none';
+};
+
+// Close the pop-up when the button inside the pop-up is clicked
+document.getElementById('popup-button').onclick = function() {
+  document.getElementById('funny-popup').style.display = 'none';
+};
+
+// Optional: Close the pop-up when the user clicks outside of the pop-up content
+window.onclick = function(event) {
+  if (event.target == document.getElementById('funny-popup')) {
+    document.getElementById('funny-popup').style.display = 'none';
+  }
+};
+
+
+  </script>
+</html>

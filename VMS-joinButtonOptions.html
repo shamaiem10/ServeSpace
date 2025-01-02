@@ -1,0 +1,269 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>VMS_Home</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+                body{
+                  
+    
+
+                    background-color: F4EFEF;
+                   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+                .nav-bar{
+                 
+                    display:flex;
+                    flex-direction: row;
+                    height:15%;
+                    justify-content:center;
+                    align-items: center;
+                }
+                .logo{
+                   height:130px;
+                   margin-left: 50%;
+
+                }
+
+                .horizontal-menu {
+                    list-style-type: none; /* Removes bullets */
+                    padding: 0; /* Removes padding */
+                    margin:0; /* Removes margin */
+                    display: flex; /* Aligns items horizontally */
+                    gap: 15px; /* Adds spacing between items (optional) */
+                    font-weight: bold;
+                    padding-right: 20px;
+                    
+                }
+
+                .horizontal-menu li {
+                    display: inline; /* Ensures the items are inline */
+
+                }
+                li:hover{
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+
+/* Styling for the active (Home) item */
+.li.active {
+    color: black; /* Dark black color */
+    text-decoration: underline; /* Always underlined */
+    font-weight: bold; /* Optional: Make it stand out more */
+}
+
+/* Hover effect for non-active items */
+ li:not(.active):hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: black; /* Light black on hover */
+}
+
+.main{
+    padding-top: 50px;
+    background-color: white;
+    height:440px;
+    margin-top:25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ 
+}
+
+
+.admin{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.org{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+.volunteer{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    height:200px;
+    
+    width:250px;
+  
+}
+.i2{
+    width:300px;
+    height:250px;
+    padding-left: 100px;
+    padding-right: 30px;
+    
+}
+.i3{
+    width:270px;
+    height:180px;
+    margin-right: -40px; 
+    object-fit: cover;
+}
+.i1{
+    margin-right: -40px;
+}
+.text-div2{
+    margin-left: 70px;
+    font-size: medium;
+    font-weight: bold;
+}
+.text-div1:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.text-div3{
+    margin-left: 40px;
+    font-size: medium;
+    font-weight: bold;
+}
+.text-div2:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.text-div3:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.text-div1{
+    font-size: medium;
+    padding-top: 10px;
+    font-weight: bold;
+}
+.horizontal-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.horizontal-menu li {
+    margin-right: 20px; /* Adjust spacing between menu items */
+}
+
+.horizontal-menu a {
+    text-decoration: none;
+    color: black; /* Or any color you prefer */
+}
+
+    
+        </style>
+    </head>
+
+
+
+
+    <body>
+        {% load static %}
+        <div class="nav-bar">
+            <div style="width:85%">
+                <img class="logo" src="{% static 'volunteers/images/VMS-Logo.jpg' %}" alt="Logo">
+            </div>
+            <div>
+                <ul class="horizontal-menu">
+                    <li><a href="{% url 'landing' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+
+
+
+
+        <div class="main">
+            <div class="grid-container">
+                <div class="grid-item admin">
+                    <img class="icon" src="{% static 'volunteers/images/aadminpic.png' %}" alt="Admin">
+                    <a href="{% url 'login-admin' %}" class="text-div1">ADMIN</a>
+                </div>
+                
+                <div class="grid-item org">
+                    <img class="icon" src="{% static 'volunteers/images/orgpic.png' %}" alt="Organization">
+                    <a href="{% url 'login-org' %}" class="text-div1">ORGANIZATION</a>
+                </div>
+                
+                <div class="grid-item volunteer">
+                    <img class="icon" src="{% static 'volunteers/images/volunteerpic.png' %}" alt="Volunteer">
+                    <a href="{% url 'login-volunteer' %}" class="text-div1">VOLUNTEER</a>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            .main {
+                display: flex;
+                justify-content: center;
+                padding-top: 50px;
+                background-color: white;
+            }
+        
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                width: 100%;
+                max-width: 900px;
+                padding: 0 20px;
+            }
+        
+            .grid-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: #e4d5d5;
+                border-radius: 15px;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+        
+            .grid-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            }
+        
+            .icon {
+                width: 150px;
+                height: 150px;
+                object-fit: contain;
+                border-radius: 10px;
+            }
+        
+            .text-div1 {
+                margin-top: 15px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #007bff;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+        
+            .text-div1:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+        </style>
+        
+
+    </body>
+</html>

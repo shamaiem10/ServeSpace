@@ -1,0 +1,962 @@
+
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ServeSpace Dashboard</title>
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+rel="stylesheet">
+
+  
+
+
+
+  <style>
+
+    /* General Reset */
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+
+body {
+
+  font-family: Arial, sans-serif;
+
+  display: flex;
+
+  min-height: 100vh;
+
+  font-family: 'Public Sans', sans-serif; 
+
+  background-color: #F4EFEF;
+
+}
+
+
+/* Container */
+
+.container {
+
+  display: flex;
+
+  width: 100%;
+
+}
+
+
+/* Sidebar */
+
+.sidebar {
+
+  width: 20%;
+
+  background-color: black;
+
+  color: #fff;
+
+  padding: 20px;
+
+}
+
+
+.profile {
+
+  text-align: center;
+
+  margin-bottom: 40px;
+
+}
+
+
+.profile-img {
+
+  width: 80px;
+
+  height: 80px;
+
+  border-radius: 50%;
+
+  margin-bottom: 10px;
+
+}
+
+
+.nav-links {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+}
+
+
+.nav-item {
+
+  text-decoration: none;
+
+  color: #fff;
+
+  font-size: 18px;
+
+}
+
+
+.nav-item:hover {
+
+  color: #ccc;
+
+}
+
+
+/* Main Content */
+
+.main-content {
+
+  width: 80%;
+
+  padding: 20px;
+
+ background-color:  F4EFEF;
+
+}
+
+
+.header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+
+}
+
+
+.logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+.search-bar {
+
+  display: flex;
+
+  gap: 10px;
+
+}
+
+
+.search-bar input {
+
+  padding: 10px;
+
+  font-size: 16px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+  margin-left:475px;
+
+}
+
+
+.search-bar button {
+
+  padding: 10px 20px;
+
+  background-color: black;
+
+  color: #fff;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+}
+
+
+.welcome-section {
+
+  margin-bottom: 30px;
+
+}
+
+
+.events-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+}
+
+
+.event-card {
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  color: black;
+
+  text-align: center;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.logo-pic{
+
+    width: 200px;
+
+    height:50px;
+
+
+}
+
+.pfp{
+
+    height:100px;
+
+    width:100px;
+
+    border-radius: 50px;
+
+}
+
+.event-card {
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  color: #333;
+
+  text-align: center;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  cursor: pointer;
+
+}
+
+
+.event-card:hover {
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  transform: scale(1.05); /* Slight zoom-in effect */
+
+}
+
+
+/* Remove default link styles if divs are wrapped in <a> tags */
+
+a.event-card {
+
+  text-decoration: none;
+
+  display: block;
+
+  color: inherit;
+
+}
+
+
+
+.events-grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+}
+
+
+.organization {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  border-left: 10px solid #e57373; /* Change this color for each card */
+
+}
+
+
+.organization:nth-child(2) {
+
+  border-left-color:rgb(78, 74, 134);
+
+}
+
+
+.organization:nth-child(3) {
+
+  border-left-color:rgb(178, 78, 118);
+
+}
+
+
+.organization-details h2 {
+
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+}
+
+
+.organization-details p {
+
+  margin: 5px 0;
+
+  font-size: 14px;
+
+}
+
+
+.delete-icon {
+
+  background: #000;
+
+  color: #fff;
+
+  width: 40px;
+
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+}
+
+
+.delete-icon:hover {
+
+  background: #e57373;
+
+}
+
+
+h3 {
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  margin-bottom: 10px;
+
+  text-align: center; /* Keep the event name centered */
+
+}
+
+
+.grey-text {
+
+  color: #505050;
+
+}
+
+.chart-container {
+
+  background-color: white; /* White card background */
+
+  border-radius: 8px;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for card effect */
+
+  padding: 20px;
+
+  max-width: 900px; /* Decrease the max width of the chart container */
+
+  height: 400px; /* Set a specific height for the container */
+
+  margin: 20px auto;
+
+}
+
+
+/* Section title */
+
+.chart-container h3 {
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+}
+
+
+/* Content wrapper: key on the left, chart on the right */
+
+.chart-content {
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 100%;
+
+}
+
+
+/* Key section styling */
+
+.chart-key {
+
+  flex: 1;
+
+  padding: 10px;
+
+  margin-right: 20px;
+
+}
+
+
+.chart-key ul {
+
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+
+}
+
+
+.chart-key li {
+
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  font-size: 0.9rem;
+
+}
+
+
+.chart-key span {
+
+  display: inline-block;
+
+  width: 15px;
+
+  height: 15px;
+
+  margin-right: 10px;
+
+  border-radius: 3px; /* Slightly rounded color indicator */
+
+}
+
+
+/* Chart canvas section styling */
+
+.chart-canvas {
+
+  flex: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.chart-canvas canvas {
+
+  max-width: 300px;
+
+  max-height: 300px;
+
+}
+
+  /* Grid container for organizations */
+  .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Styling for each organization block */
+    .organization {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+      padding: 20px;
+    }
+
+    /* Apply visible class to fade in and animate */
+    .organization.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .organization-details h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .organization-details p {
+      margin: 5px 0;
+    }
+
+    .grey-text {
+      color: #666;
+    }
+
+    /* Styling for the delete icon (Trash) */
+    .delete-icon {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .delete-icon a {
+      display: inline-block;
+      background-color: #ff6f61;
+      border-radius: 50%;
+      padding: 12px;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect for delete icon */
+    .delete-icon a:hover {
+      transform: scale(1.2);
+      background-color: #e53e36;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hover effect for SVG trash icon */
+    .delete-icon svg {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    /* Rotate the trash icon and apply a shadow on hover */
+    .delete-icon a:hover svg {
+      transform: rotate(20deg);
+      filter: drop-shadow(0 0 5px rgba(255, 100, 100, 0.7));
+    }
+
+    /* Delay the fade-in effect for grid items */
+    .organization:nth-child(odd) {
+      transition-delay: 0.2s;
+    }
+
+    .organization:nth-child(even) {
+      transition-delay: 0.4s;
+    }
+.chart-container{
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+      <div class="profile">
+
+        <br>
+
+        <img style="margin-bottom: 10px;" class="pfp" src="{% static 'volunteers/images/adminpfp.jpg' %}"
+alt="Profile Picture" class="profile-img">
+
+        <h3>{{ username }}</h3>
+
+        <br>
+
+        <p>Admin</p>
+
+      </div>
+
+      <nav class="nav-links">
+
+        <a href="{% url 'admin-dashboard' %}" class="nav-item">
+
+            <span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" 
+height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5
+ 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+
+                </svg>
+
+            </span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <a href="{% url 'admin-view-org' %}" class="nav-item">
+
+            <span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" 
+height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+
+                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3
+ 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5
+ 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+
+                </svg>
+
+            </span>
+
+            <span style="color: gray;">View Organizations</span>
+
+        </a>
+
+        <a href="{% url 'admin-view-volunteers' %}" class="nav-item">
+
+            <span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" 
+height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+
+                </svg>
+
+            </span>
+
+            <span>View Volunteers</span>
+
+        </a>
+
+        <a href="{% url 'admin-view-feedbacks' %}" class="nav-item">
+
+            <span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" 
+height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0
+ 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+
+                </svg>
+
+            </span>
+
+            <span>View Feedbacks</span>
+
+        </a>
+
+        <!-- Logout Button -->
+
+        <div class="log-out">
+
+          <a href="{% url 'join-button-options' %}" class="nav-item"
+style="color: red; font-weight: bold;">
+
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+height="16" fill="currentColor" class="bi bi-box-arrow-right"
+viewBox="0 0 16 16">
+
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5
+ 0 0 0-1 0z"/>
+
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+
+            </svg></span> Logout
+
+          </a>
+
+        </div>
+
+    </nav>
+
+    
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+      <header class="header">
+
+        <div class="logo">
+
+          <img class="logo-pic" src="{%static 'volunteers/images/VMS-Logo-resize.jpg'%}"
+alt="Logo">
+
+          
+
+<div class="search-bar">
+  <form method="get">
+    <input type="text" name="search" placeholder="Filter by organization or CEO name..." value="{{ search_term }}" />
+    <button type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+
+      </header>
+
+
+      <section class="welcome-section">
+
+        <h2>Organizations</h2>
+
+      </section>
+
+      <div class="chart-container">
+        
+        <canvas id="myPieChart" width="300" height="300"></canvas>
+      </div>
+    
+      <script>
+        // Data for the pie chart
+        const eventData = {
+          labels: ['Organization 1', 'Organization 2', 'Organization 3'], // Labels for each section
+          datasets: [{
+            data: [30, 50, 20], // The data values for each section
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Colors for each section
+            hoverBackgroundColor: ['#FF5252', '#3399FF', '#FFB84D'] // Hover effect colors
+          }]
+        };
+    
+        // Pie Chart Configuration
+        const config = {
+          type: 'pie', // Pie chart type
+          data: eventData, // Data to be displayed in the chart
+          options: {
+            responsive: true, // Make the chart responsive to window resizing
+            plugins: {
+              legend: {
+                position: 'top', // Position of the legend
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(tooltipItem) {
+                    return tooltipItem.label + ': ' + tooltipItem.raw + '%'; // Show percentage in tooltips
+                  }
+                }
+              }
+            }
+          }
+        };
+    
+        // Create and render the pie chart
+        window.onload = function() {
+          const ctx = document.getElementById('myPieChart').getContext('2d'); // Get canvas context
+          new Chart(ctx, config); // Initialize the chart
+        };
+      </script>
+
+      
+
+    <section class="events-grid">
+      {% for org in organizations %}
+      <div class="organization">
+        <div class="organization-details">
+          <h2>{{ org.org_name }}</h2>
+          <p><strong>CEO:</strong> <span class="grey-text"> {{ org.ceo_name }}</span></p>
+          <p><strong>Contact Email:</strong> <span class="grey-text"> {{ org.contact_email }}</span></p>
+          <p><strong>Contact Number:</strong> <span class="grey-text"> {{ org.contact_number }}</span></p>
+     
+          <p><strong>Organization Type:</strong> <span class="grey-text"> {{ org.org_type }}</span></p>
+        </div>
+  
+        <div class="delete-icon">
+          <a href="{% url 'delete_organization' org.org_id %}">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <script>
+      // JavaScript to add the "visible" class when the organization becomes visible in the viewport
+      document.addEventListener('DOMContentLoaded', function () {
+        const organizations = document.querySelectorAll('.organization');
+  
+        function showOnScroll() {
+          organizations.forEach(org => {
+            if (org.getBoundingClientRect().top <= window.innerHeight) {
+              org.classList.add('visible');
+            }
+          });
+        }
+  
+        window.addEventListener('scroll', showOnScroll);
+        showOnScroll();  // Trigger the fade-in effect on page load
+      });
+    </script>
+      
+
+      
+
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Safely pass the data from Django
+  const locationData = JSON.parse('{{ location_data|json_script:"location-data"|escapejs }}');
+  console.log(locationData);  // Check if data is passed correctly
+  
+  // Check if locationData is in the expected format
+  if (locationData && typeof locationData === 'object') {
+    const locations = Object.keys(locationData);  // Locations (head office addresses)
+    const counts = Object.values(locationData);  // Number of organizations
+    
+    // Make sure the canvas element exists
+    const ctx = document.getElementById('myPieChart');
+    if (ctx) {
+      // Initialize the chart
+      const myPieChart = new Chart(ctx, {
+        type: 'pie',  // Chart type
+        data: {
+          labels: locations,  // The locations (labels)
+          datasets: [{
+            label: 'Organizations by Location',
+            data: counts,  // The counts (dataset values)
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(153, 102, 255, 0.6)',
+              'rgba(255, 159, 64, 0.6)',
+              'rgba(255, 99, 71, 0.6)',
+              'rgba(255, 165, 0, 0.6)',
+              'rgba(0, 255, 0, 0.6)',
+              'rgba(255, 20, 147, 0.6)',
+              'rgba(238, 130, 238, 0.6)',
+              'rgba(0, 191, 255, 0.6)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          aspectRatio: 1, // Set the aspect ratio to control the size and shape (1 = square)
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.label}: ${context.raw}`;
+                }
+              }
+            }
+          }
+        }
+      });
+    } else {
+      console.error('Chart canvas element not found!');
+    }
+  } else {
+    console.error('Invalid location data format:', locationData);
+  }
+  </script>
+  
+
+</html>
+
+

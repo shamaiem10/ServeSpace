@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Cool Login/Signup Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e7a93, #1c2026);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .forms-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .forms {
+            display: flex;
+            flex-direction: row;
+            width: 700px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .form-wrapper {
+            display: none;
+            flex-basis: 50%;
+            padding: 40px;
+        }
+
+        .form-wrapper.is-active {
+            display: block;
+        }
+
+        .form-wrapper button {
+            background: none;
+            border: none;
+            color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-wrapper .underline {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #007bff;
+            margin-top: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .input-block {
+            margin-bottom: 20px;
+        }
+
+        .input-block label {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .input-block input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-block input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .btn-login, .btn-signup {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-login:hover, .btn-signup:hover {
+            background-color: #0056b3;
+        }
+
+        .form-wrapper h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .switcher {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .form-wrapper .switcher-login, .form-wrapper .switcher-signup {
+            color: #007bff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-wrapper .switcher-login:hover, .form-wrapper .switcher-signup:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organization Login/Signup</h1>
+
+    <section class="forms-section">
+        <div class="forms">
+            <div class="form-wrapper is-active" id="login-form">
+                <h2>Login</h2>
+                <form method="POST" class="form form-login">
+                    {% csrf_token %}
+                    <div class="input-block">
+                        <label for="login-username">Username</label>
+                        {{ login_form.username }}
+                    </div>
+                    <div class="input-block">
+                        <label for="login-password">Password</label>
+                        {{ login_form.password }}
+                    </div>
+                    <button type="submit" name="login" class="btn-login">Login</button>
+                </form>
+                <div class="switcher switcher-login">
+                    Don't have an account? <span>Sign up</span>
+                </div>
+            </div>
+
+            <div class="form-wrapper" id="signup-form">
+                <h2>Sign Up</h2>
+                <form method="POST" class="form form-signup">
+                    {% csrf_token %}
+                    <div class="input-block">
+                        <label for="org-name">Organization Name</label>
+                        {{ organization_form.org_name }}
+                    </div>
+                    <div class="input-block">
+                        <label for="ceo-name">CEO Name</label>
+                        {{ organization_form.ceo_name }}
+                    </div>
+                    <div class="input-block">
+                        <label for="contact-email">Contact Email</label>
+                        {{ organization_form.contact_email }}
+                    </div>
+                    <div class="input-block">
+                        <label for="contact-number">Contact Number</label>
+                        {{ organization_form.contact_number }}
+                    </div>
+                    <div class="input-block">
+                        <label for="headoffice-address">Head Office Address</label>
+                        {{ organization_form.headoffice_address }}
+                    </div>
+                    <div class="input-block">
+                        <label for="org-type">Organization Type</label>
+                        {{ organization_form.org_type }}
+                    </div>
+
+                    <div class="input-block">
+                        <label for="username">Username</label>
+                        {{ verification_form.username }}
+                    </div>
+                    <div class="input-block">
+                        <label for="password">Password</label>
+                        {{ verification_form.password }}
+                    </div>
+                    <div class="input-block">
+                        <label for="position">Position</label>
+                        {{ verification_form.position }}
+                    </div>
+                    <button type="submit" name="signup" class="btn-signup">Sign Up</button>
+                </form>
+                <div class="switcher switcher-signup">
+                    Already have an account? <span>Login</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const switchers = document.querySelectorAll('.switcher');
+        const forms = document.querySelectorAll('.form-wrapper');
+
+        switchers.forEach(switcher => {
+            switcher.addEventListener('click', () => {
+                forms.forEach(form => form.classList.toggle('is-active'));
+            });
+        });
+    </script>
+
+</body>
+</html>
