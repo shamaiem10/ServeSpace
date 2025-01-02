@@ -97,3 +97,24 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
 - Place all images in the static/images/ folder.
 - Use the templates/volunteers/ folder for all HTML files.
 - Include CSS and JavaScript files in static/css/ and static/js/ respectively.
+## 👨‍💻 My Contributions
+
+- **[Shamaiem](https://github.com/shamaiem10)**:
+  - Frontend Coding.
+  - Developed the backend logic for volunteer.
+  - Configured and integrated the database (MySQL) for storing project data.
+  - Designed and structured the project’s directory, including the static and templates folders.
+    
+## 🤝 Collaborators
+
+- **[Minahil](https://github.com/Minahil-Rauf)**:
+  - Database Design.
+  - Developed Backend logic for organization.
+
+- **[Maryam](https://github.com/maryam)**:
+  - Canva UI design.
+  - Developed Backend logic for admin.
+  - Database Design.
+
+
+
