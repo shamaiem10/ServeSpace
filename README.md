@@ -84,10 +84,15 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
 
 ## Usage
 **Setting Up the App**
-1.**Create a Django project named ServeSpaceProject**
+1.**Create a Django project named ServeSpaceProject** 
+
 `django-admin startproject ServeSpace`
+
+
 2.**Create an app named 'volunteers'**
 `python manage.py startapp volunteers`
+
+
 **Static & Template files**
 - Place all images in the static/images/ folder.
 - Use the templates/volunteers/ folder for all HTML files.
