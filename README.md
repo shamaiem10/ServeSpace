@@ -1,7 +1,7 @@
 # ServeSpace  
 **ServeSpace** is a volunteer management system built using Django. It enables organizations to efficiently manage their volunteers by providing features like profile management, scheduling, and participation tracking.  
 
-## Features  
+
 ## 🧑‍💻 User Roles & Features
 
 ServeSpace has three primary user roles, each with distinct features and capabilities:
