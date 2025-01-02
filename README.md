@@ -36,10 +36,10 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
    ```bash
    git clone https://github.com/username/ServeSpace.git
    cd ServeSpace
-2. **Set up Virtual Environment*8
+2. **Set up Virtual Environment**
    python -m venv env
-source env/bin/activate  # For Linux/Mac
-env\Scripts\activate     # For Windows
+   source env/bin/activate  # For Linux/Mac
+   env\Scripts\activate     # For Windows
 3. **Install Dependencies**
    pip install django mysqlclient
 Note: mysqlclient is required to connect Django with MySQL. If you encounter installation issues with mysqlclient, refer to the installation guide.
