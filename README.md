@@ -2,10 +2,40 @@
 **ServeSpace** is a volunteer management system built using Django. It enables organizations to efficiently manage their volunteers by providing features like profile management, scheduling, and participation tracking.  
 
 ## Features  
-- **Volunteer Profiles**: Add, update, and manage volunteer details.  
-- **Schedules**: Create and manage events and schedules for volunteers.  
-- **Interactive UI**: User-friendly interface built with HTML, CSS, and JavaScript.  
-- **Dynamic Content**: Seamless integration of backend and frontend using Django.  
+## 🧑‍💻 User Roles & Features
+
+ServeSpace has three primary user roles, each with distinct features and capabilities:
+
+### 1. **Admin**
+The Admin role has full control over the application and can manage all users and settings. Features for Admin:
+- **User Management**: Admin can delete, and view all users, including volunteers and organizations.
+- **Dashboard Access**: Access to the overall dashboard, where Admin can view activity reports, registration statistics, and system logs.
+- **Data Overview**: Admin has access to all the data in the system, including volunteer hours, organization progress, and completed projects.
+
+### 2. **Organization (Org)**
+Organizations can manage volunteers and oversee projects or campaigns. Features for Organizations:
+- **Volunteer Management**: Org users can view, accept, or reject volunteers for specific tasks or projects.
+- **Project Management**: Create and manage volunteer opportunities or events, track their progress, and assign tasks to volunteers.
+- **Communicate with Volunteers**: Send messages or updates to volunteers working on specific projects.
+
+### 3. **Volunteer**
+Volunteers can register, view, and participate in projects, but have limited access compared to Admin and Organizations. Features for Volunteers:
+- **Profile Management**: Volunteers can update their personal information, contact details, and preferences.
+- **Browse Volunteer Opportunities**: Volunteers can view available projects and events in the organization, and register for the ones they are interested in.
+- **Notifications**: Receive updates and notifications about project changes, upcoming events, and organizational news.
+  
+### 4. **Leaderboard**
+The **Leaderboard** feature ranks volunteers based on their contribution, allowing a competitive and rewarding environment. Features for Leaderboard:
+- **Volunteer Ranking**: Volunteers are ranked based on the total hours worked, number of projects completed, or other criteria defined by the organization.
+- **Top Performers**: Display the top volunteers with the most hours or significant contributions, fostering a sense of achievement and encouraging more participation.
+- **Leaderboard Display**: The leaderboard is displayed on the volunteer dashboard, showing the rankings for top contributors.
+
+### Additional Features:
+- **User Authentication**: Secure login and registration system for all user types.
+- **Volunteer Hours Tracking**: A feature that allows volunteers to log their hours and track participation.
+- **Real-time Notifications**: Volunteers and Organizations are notified in real-time for any project or registration updates.
+
+
 
 ---
 
@@ -97,7 +127,7 @@ ServeSpace/ ├── ServeSpace/ # Main project folder │ ├── init.py �
 - Place all images in the static/images/ folder.
 - Use the templates/volunteers/ folder for all HTML files.
 - Include CSS and JavaScript files in static/css/ and static/js/ respectively.
-## 👨‍💻 My Contributions
+## My Contributions
 
 - **[Shamaiem](https://github.com/shamaiem10)**:
   - Frontend Coding.
