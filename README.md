@@ -78,7 +78,8 @@ The project is organized into different folders and files. Here's a breakdown:
 **__init__.py:** Similar to the one in the main folder, it marks this folder as a Python package.
 tests.py: Holds the test cases to check if the app is working correctly.
 # Other Files:
-**manage.py:** A command-line tool used to manage and run the project (like starting the server or creating database migrations).
+**manage.py:** A command-line tool used to manage and run the project (like starting the server or creating database migrations).  
+
 
 
 **db.sqlite3:** The database file where the project's data is stored (only if using SQLite).
