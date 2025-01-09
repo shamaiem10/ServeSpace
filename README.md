@@ -48,7 +48,7 @@ The **Leaderboard** feature ranks volunteers based on their contribution, allowi
 ## Project Structure
 The project is organized into different folders and files. Here's a breakdown:
 
-# Main Folder: ServeSpace/
+## Main Folder: ServeSpace/
 ### ServeSpace/: This is the main folder for the project, which contains all the core files.
 **settings.py:** Contains the configuration settings for the project.
 
@@ -63,21 +63,52 @@ The project is organized into different folders and files. Here's a breakdown:
 
 
 ### App Folder: volunteers/
-### volunteers/: This folder holds the files related to the app named volunteers (the core functionality of the project).
-### migrations/: This folder contains files related to the database schema changes (like adding new tables).
-### static/: This folder stores static files (like images, CSS, and JavaScript).
-### css/: Holds the CSS files for styling the web pages.
-### js/: Contains JavaScript files to add interactivity to the website.
-### images/: Stores image files used in the project.
-### templates/: This folder contains the HTML files used to structure the web pages.
-### volunteers/: Stores the HTML files specific to the volunteers app.
+
+
+**volunteers/:**  This folder holds the files related to the app named volunteers (the core functionality of the project).
+
+
+**migrations/:**  This folder contains files related to the database schema changes (like adding new tables).
+
+
+**static/:**  This folder stores static files (like images, CSS, and JavaScript).
+
+
+**css/:**  Holds the CSS files for styling the web pages.
+
+
+**js/:**  Contains JavaScript files to add interactivity to the website.
+
+
+**images/:** Stores image files used in the project.
+
+
+**templates/:**  This folder contains the HTML files used to structure the web pages.
+
+
+**volunteers/:**  Stores the HTML files specific to the volunteers app.
+
+
 **models.py:** Defines the database structure (like the tables and fields).
+
+
 **views.py:** Contains the code that defines what happens when a user requests a page.
+
+
 **admin.py:** Allows the creation of an admin interface to manage the database.
+
+
 **apps.py:** Configures the app settings.
+
+
 **__init__.py:** Similar to the one in the main folder, it marks this folder as a Python package.
-tests.py: Holds the test cases to check if the app is working correctly.
+
+
+**tests.py:** Holds the test cases to check if the app is working correctly.
+
+---
 # Other Files:
+
 **manage.py:** A command-line tool used to manage and run the project (like starting the server or creating database migrations).  
 
 
