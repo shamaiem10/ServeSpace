@@ -207,7 +207,7 @@ The project is organized into different folders and files. Here's a breakdown:
   - Database Design.
   - Developed Backend logic for organization.
 
-- **[Maryam](https://github.com/maryam)**:
+- **[Maryam](https://github.com/maryamSheraz)**:
   - Canva UI design.
   - Developed Backend logic for admin.
   - Database Design.
