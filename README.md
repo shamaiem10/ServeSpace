@@ -211,6 +211,8 @@ The project is organized into different folders and files. Here's a breakdown:
   - Canva UI design.
   - Developed Backend logic for admin.
   - Database Design.
+  - Database Coding
+    
 
 
 
